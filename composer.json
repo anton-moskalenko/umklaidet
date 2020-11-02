@@ -1,0 +1,22 @@
+{
+  "name": "anton-moskalenko/umklaidet",
+  "license": "Apache-2.0",
+  "description": "Web-games engine",
+  "require": {
+    "php": "^7.0",
+    "anton-moskalenko/rune-framework": "dev-main",
+    "anton-moskalenko/elscript": "dev-main"
+  },
+  "type": "project",
+  "keywords": [
+    "framework",
+    "rune-framework",
+    "rf"
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Liloi\\Umklaidet\\": "Source"
+    }
+  }
+}
