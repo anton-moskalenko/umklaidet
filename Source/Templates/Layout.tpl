@@ -2,9 +2,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Umklaidet</title>
+    <title><?php echo $title; ?></title>
 </head>
 <body>
-
+    <?php echo $layout; ?>
 </body>
 </html>
