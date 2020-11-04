@@ -43,7 +43,8 @@ class Application extends RuneApplication
 
         return $this->render($this->getLayout(), [
             'title' => $this->config['title'],
-            'layout' => $parser->parse($layout)->getOutput()
+            'layout' => $parser->parse($layout)->getOutput(),
+            'background' => $this->config['background'],
         ]);
     }
 }
