@@ -42,9 +42,7 @@ class Application extends RuneApplication
         $parser = new Elscript();
 
         return $this->render($this->getLayout(), [
-            'title' => $this->config['title'],
-            'layout' => $parser->parse($layout)->getOutput(),
-            'background' => $this->config['background'],
+            'title' => $this->config['title']
         ]);
     }
 }
