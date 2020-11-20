@@ -15,11 +15,12 @@
             padding: 0;
             margin: 0;
             padding-top: 10px;
+            overflow: hidden;
         }
 
         div.frame {
             width: 95%;
-            height: 100%;
+            height: 95%;
             background-color: whitesmoke;
             padding: 10px;
             margin: 0 auto;
@@ -29,6 +30,7 @@
             border-color: #d2b106;
             border-right-color: #af8928;
             border-bottom-color: #af8928;
+            overflow-y: scroll;
         }
     </style>
 </head>
