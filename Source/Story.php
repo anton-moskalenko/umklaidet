@@ -68,6 +68,13 @@ class Story
             $tile = $child;
         }
 
-        return $tile->asXML();
+        return $this->getContentHtml($tile);
+    }
+
+    private function getContentHtml($tile): string
+    {
+        return $this->render(__DIR__ . '/Templates/Html.tpl', [
+            'content' => $tile->asXML()
+        ]);
     }
 }
