@@ -12,11 +12,32 @@ class Story
 
     private $root;
 
+    private $tiles = [];
+
     public function __construct(string $storyFileName)
     {
         $this->storyFileName = $storyFileName;
         $this->xml = simplexml_load_file($storyFileName);
         $this->root = dirname($storyFileName);
+
+        $this->getSearch();
+    }
+
+    public function getSearch()
+    {
+        $tiles = null;
+        foreach($this->xml->children() as $child)
+        {
+            if($child->getName() == 'tiles') {
+                $tiles = $child;
+                break;
+            }
+        }
+
+        foreach ($tiles->children() as $child)
+        {
+            $this->tiles[(string)$child['id']] = $child;
+        }
     }
 
     protected function render(string $template, array $data = []): string
@@ -48,25 +69,7 @@ class Story
 
     public function getContent(string $id)
     {
-        $tiles = null;
-        foreach($this->xml->children() as $child)
-        {
-            if($child->getName() == 'tiles') {
-                $tiles = $child;
-                break;
-            }
-        }
-
-        $tile = null;
-
-        foreach ($tiles->children() as $child)
-        {
-            if($child['id'] != $id) {
-                continue;
-            }
-
-            $tile = $child;
-        }
+        $tile = $this->tiles[$id];
 
         return $this->getContentHtml($tile);
     }
