@@ -11,11 +11,11 @@ use Liloi\Elscript\Elscript;
  */
 class Application extends RuneApplication
 {
-    private $config;
+    private $storyFileName;
 
-    public function __construct(array $config)
+    public function __construct(string $storyFileName)
     {
-        $this->config = $config;
+        $this->storyFileName = $storyFileName;
     }
 
     protected function render(string $template, array $data = []): string
@@ -38,11 +38,11 @@ class Application extends RuneApplication
     {
         $this->setLayout(__DIR__ . '/Templates/Layout.tpl');
 
-        $layout = file_get_contents($this->config['layout']);
-        $parser = new Elscript();
+//        $layout = file_get_contents($this->config['layout']);
+//        $parser = new Elscript();
 
         return $this->render($this->getLayout(), [
-            'title' => $this->config['title']
+
         ]);
     }
 }
