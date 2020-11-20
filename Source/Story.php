@@ -2,20 +2,21 @@
 
 namespace Liloi\Umklaidet;
 
-use Rune\Application as RuneApplication;
-
 use Liloi\Elscript\Elscript;
 
-/**
- * @inheritDoc
- */
-class Application extends RuneApplication
+class Story
 {
     private $storyFileName;
+
+    private $xml;
+
+    private $root;
 
     public function __construct(string $storyFileName)
     {
         $this->storyFileName = $storyFileName;
+        $this->xml = simplexml_load_file($storyFileName);
+        $this->root = dirname($storyFileName);
     }
 
     protected function render(string $template, array $data = []): string
@@ -29,15 +30,11 @@ class Application extends RuneApplication
         return $output;
     }
 
-    /**
-     * Compiles page.
-     *
-     * @return string Full output page.
-     */
     public function compile(): string
     {
-        $story = new Story($this->storyFileName);
-
-        return $story->compile();
+//        die(var_dump(__LINE__, $this->xml));
+        return $this->render(__DIR__ . '/Templates/Layout.tpl', [
+            'title' => $this->xml['title']
+        ]);
     }
 }
