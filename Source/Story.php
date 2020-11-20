@@ -34,7 +34,40 @@ class Story
     {
 //        die(var_dump(__LINE__, $this->xml));
         return $this->render(__DIR__ . '/Templates/Layout.tpl', [
-            'title' => $this->xml['title']
+            'title' => $this->xml['title'],
+            'content' => $this->getContent($this->getStartupId())
         ]);
+    }
+
+    /* ---------------------------------------------------------------- */
+
+    public function getStartupId(): string
+    {
+        return $this->xml['start'];
+    }
+
+    public function getContent(string $id)
+    {
+        $tiles = null;
+        foreach($this->xml->children() as $child)
+        {
+            if($child->getName() == 'tiles') {
+                $tiles = $child;
+                break;
+            }
+        }
+
+        $tile = null;
+
+        foreach ($tiles->children() as $child)
+        {
+            if($child['id'] != $id) {
+                continue;
+            }
+
+            $tile = $child;
+        }
+
+        return $tile->asXML();
     }
 }
