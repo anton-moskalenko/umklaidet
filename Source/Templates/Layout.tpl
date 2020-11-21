@@ -21,7 +21,7 @@
         div.frame {
             width: 95%;
             height: 95%;
-            background-color: whitesmoke;
+            background-color: white;
             padding: 10px;
             margin: 0 auto;
             border-radius: 5px;
